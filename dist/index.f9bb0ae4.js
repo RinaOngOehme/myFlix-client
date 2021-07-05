@@ -870,25 +870,20 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
+var _mainView = require("./components/main-view/main-view");
+var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
-        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "my-flix",
-            __source: {
-                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\index.jsx",
-                lineNumber: 11
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_mainViewDefault.default, {
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\index.jsx",
                 lineNumber: 12
             },
             __self: this
-        }, "Good morning")));
+        }));
     }
 }
 // Finds the root of your app
@@ -901,7 +896,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElemen
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-dom":"2sg1U","./index.scss":"2mAlU","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"3b2NM":[function(require,module,exports) {
+},{"react":"3b2NM","react-dom":"2sg1U","./components/main-view/main-view":"3x38c","./index.scss":"2mAlU","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"3b2NM":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react.development.js');
 
@@ -21850,7 +21845,209 @@ module.exports = require('./cjs/scheduler-tracing.development.js');
     exports.unstable_wrap = unstable_wrap;
 })();
 
-},{}],"2mAlU":[function() {},{}],"3xBS9":[function(require,module,exports) {
+},{}],"3x38c":[function(require,module,exports) {
+var helpers = require("../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieView = require("../movie-view/movie-view");
+var _movieCard = require("../movie-card/movie-card");
+class MainView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+            movies: [
+                {
+                    _id: 1,
+                    Title: 'Jason Bourne',
+                    Description: 'Jason Bourne is a 2016 American action-thriller film directed by Paul Greengrass and written by Greengrass and Christopher Rouse. It is the fifth installment of the Bourne film series and a direct sequel to The Bourne Ultimatum (2007). Matt Damon reprises his role as the main character, former CIA assassin Jason Bourne.',
+                    ImagePath: 'https://en.wikipedia.org/wiki/Jason_Bourne_(film)#/media/File:Jason_Bourne_(film).jpg'
+                },
+                {
+                    _id: 2,
+                    Title: 'A Star Is Born',
+                    Description: 'A Star Is Born is a 2018 American musical romantic drama film produced and directed by Bradley Cooper (in his directorial debut) and written by Cooper, Eric Roth and Will Fetters. It stars Cooper, Lady Gaga, Dave ',
+                    ImagePath: 'https://en.wikipedia.org/wiki/A_Star_Is_Born_(2018_film)#/media/File:A_Star_is_Born.png'
+                },
+                {
+                    _id: 3,
+                    Title: 'The Martian',
+                    Description: 'The Martian is a 2015 British-American science fiction film directed by Ridley Scott and starring Matt Damon. Drew Goddard adapted the screenplay from The Martian, a 2011 novel by Andy Weir. The film depicts an astronaut\'s lone struggle to survive on Mars after being left behind, and the efforts of NASA to rescue him and bring him home to Earth. It also stars Jessica Chastain, Jeff Daniels, Kristen Wiig, Chiwetel Ejiofor, Sean Bean, Michael Peña, Kate Mara, Sebastian Stan, Aksel Hennie, Mackenzie Davis, Donald Glover, and Benedict Wong.',
+                    ImagePath: 'https://en.wikipedia.org/wiki/The_Martian_(film)#/media/File:The_Martian_film_poster.jpg'
+                }
+            ],
+            selectedMovie: null
+        };
+    }
+    setSelectedMovie(newSelectedMovie) {
+        this.setState({
+            selectedMovie: newSelectedMovie
+        });
+        render();
+        {
+            const { movies , selectedMovie  } = this.state;
+            if (selectedMovie) return(/*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
+                movie: selectedMovie,
+                __source: {
+                    fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                    lineNumber: 26
+                },
+                __self: this
+            }));
+            if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                className: "main-view",
+                __source: {
+                    fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                    lineNumber: 28
+                },
+                __self: this
+            }, "The list is empty!"));
+            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                className: "main-view",
+                __source: {
+                    fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                    lineNumber: 31
+                },
+                __self: this
+            }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
+                movie: selectedMovie,
+                onBackClick: (newSelectedMovie)=>{
+                    this.setSelectedMovie(newSelectedMovie);
+                },
+                __source: {
+                    fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                    lineNumber: 33
+                },
+                __self: this
+            }) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
+                    key: movie._id,
+                    movie: movie,
+                    onMovieClick: (movie1)=>{
+                        this.setSelectedMovie(movie1);
+                    },
+                    __source: {
+                        fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                        lineNumber: 35
+                    },
+                    __self: this
+                })
+            )));
+        }
+    }
+}
+exports.default = MainView;
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","../movie-view/movie-view":"3EBB7","../movie-card/movie-card":"PKcnf","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"3EBB7":[function(require,module,exports) {
+var helpers = require("../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieView extends _reactDefault.default.Component {
+    render() {
+        const { movie , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-view",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 8
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-poster",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 9
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+            src: movie.ImagePath,
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 10
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-title",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 13
+            },
+            __self: this
+        }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 14
+            },
+            __self: this
+        }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-description",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 16
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 17
+            },
+            __self: this
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 18
+            },
+            __self: this
+        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+            onClick: ()=>{
+                onBackClick(null);
+            },
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 20
+            },
+            __self: this
+        }, "Back")));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"3xBS9":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -22002,6 +22199,41 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"3pp0v"}]},["1j6wU","2EgDh","4SWy4"], "4SWy4", "parcelRequire279c")
+},{"react-refresh/runtime":"3pp0v"}],"PKcnf":[function(require,module,exports) {
+var helpers = require("../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieCard extends _reactDefault.default.Component {
+    render() {
+        const { movie , onMovieClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-card",
+            onClick: ()=>{
+                onMovieClick(movie);
+            },
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 6
+            },
+            __self: this
+        }, movie.Title));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"2mAlU":[function() {},{}]},["1j6wU","2EgDh","4SWy4"], "4SWy4", "parcelRequire279c")
 
 //# sourceMappingURL=index.f9bb0ae4.js.map
