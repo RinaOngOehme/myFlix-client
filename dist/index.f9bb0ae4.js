@@ -23344,7 +23344,7 @@ class MovieView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-            src: movie.ImagePath,
+            src: movie.ImageUrl,
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
                 lineNumber: 19
