@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -34,6 +36,11 @@ export class MainView extends React.Component {
   onLoggedIn(user) {
     this.setState({
       user
+    });
+  }
+  onRegister(register) {
+    this.setState({
+      register
     });
   }
   render() {
