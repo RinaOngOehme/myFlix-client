@@ -21898,9 +21898,9 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     render() {
-        const { movies , selectedMovie  } = this.state;
+        const { movies , selectedMovie , user  } = this.state;
         if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
-            onLoggedIn: (user)=>this.onLoggedIn(user)
+            onLoggedIn: (user1)=>this.onLoggedIn(user1)
             ,
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
@@ -21909,13 +21909,12 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }));
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "main-view",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 51
             },
             __self: this
-        }, "The list is empty!"));
+        }, " className=\"main-view\""));
         return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
