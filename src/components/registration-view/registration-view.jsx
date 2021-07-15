@@ -22,18 +22,18 @@ export function RegistrationView(props) {
     <Row className="justify-content-md-center">
       <Col md={8}>
         <Form>
-          <Form.Group controlId="formUsername">
+          <Form.Group className="mb-3" controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
           </Form.Group>
-          <Form.Group controlId="formPassword">
+          <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Password:</Form.Label>
             <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
-          <Form.Group controlId="formEmail">
+          <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email:</Form.Label>
             <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
           </Form.Group>
-          <Form.Group controlId="formBirthday">
+          <Form.Group className="mb-3" controlId="formBirthday">
             <Form.Label>Birthday:YYYY-MM-DD</Form.Label>
             <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
           </Form.Group>
