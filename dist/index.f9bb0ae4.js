@@ -880,6 +880,7 @@ var _indexScss = require("./index.scss");
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
+            className: "my-flix",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\index.jsx",
                 lineNumber: 13
@@ -21927,18 +21928,25 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }, " className=\"main-view\""));
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
-            className: "justify-content-md-center",
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "main-view",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 56
             },
             __self: this
-        }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
-            md: 8,
+        }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+            className: "row-styles",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 59
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+            md: 6,
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                lineNumber: 60
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
@@ -21948,14 +21956,21 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 60
+                lineNumber: 61
             },
             __self: this
-        })) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
-                md: 3,
+        }))) : /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+            className: "row-styles",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                lineNumber: 66
+            },
+            __self: this
+        }, movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                md: 4,
                 __source: {
                     fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                    lineNumber: 64
+                    lineNumber: 68
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
@@ -21966,11 +21981,11 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                    lineNumber: 65
+                    lineNumber: 69
                 },
                 __self: this
             }))
-        )));
+        ))));
     }
 }
 exports.default = MainView;
@@ -23635,6 +23650,9 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _registrationViewScss = require("./registration-view.scss");
 var _s = $RefreshSig$();
 function RegistrationView(props) {
     _s();
@@ -23651,46 +23669,25 @@ function RegistrationView(props) {
         className: "justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 22
+            lineNumber: 26
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
         md: 8,
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 23
+            lineNumber: 27
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 24
+            lineNumber: 28
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        className: "mb-3",
         controlId: "formUsername",
-        __source: {
-            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 25
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 26
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "text",
-        onChange: (e)=>setUsername(e.target.value)
-        ,
-        __source: {
-            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 27
-        },
-        __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 29
@@ -23702,9 +23699,9 @@ function RegistrationView(props) {
             lineNumber: 30
         },
         __self: this
-    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "password",
-        onChange: (e)=>setPassword(e.target.value)
+    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "text",
+        onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
@@ -23712,29 +23709,31 @@ function RegistrationView(props) {
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formEmail",
-        __source: {
-            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 32
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        className: "mb-3",
+        controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 33
         },
         __self: this
-    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "email",
-        onChange: (e)=>setEmail(e.target.value)
-        ,
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 34
         },
         __self: this
+    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "password",
+        onChange: (e)=>setPassword(e.target.value)
+        ,
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
+            lineNumber: 35
+        },
+        __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formBirthday",
+        className: "mb-3",
+        controlId: "formEmail",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 36
@@ -23746,28 +23745,60 @@ function RegistrationView(props) {
             lineNumber: 37
         },
         __self: this
-    }, "Birthday:YYYY-MM-DD"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
-        type: "date",
-        onChange: (e)=>setBirthday(e.target.value)
+    }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "email",
+        onChange: (e)=>setEmail(e.target.value)
         ,
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 38
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "primary",
-        type: "submit",
-        onClick: handleSubmit,
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        className: "mb-3",
+        controlId: "formBirthday",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 40
         },
         __self: this
-    }, "Submit")))));
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
+            lineNumber: 41
+        },
+        __self: this
+    }, "Birthday(YYYY-MM-DD):"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        type: "date",
+        onChange: (e)=>setBirthday(e.target.value)
+        ,
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
+            lineNumber: 42
+        },
+        __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        variant: "warning",
+        type: "submit",
+        onClick: handleSubmit,
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
+            lineNumber: 44
+        },
+        __self: this
+    }, "Register")))));
 }
 _s(RegistrationView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
 _c = RegistrationView;
+RegistrationView.propTypes = {
+    register: _propTypesDefault.default.shape({
+        username: _propTypesDefault.default.string.isRequired,
+        password: _propTypesDefault.default.string.isRequired,
+        email: _propTypesDefault.default.string.isRequired,
+        birthday: _propTypesDefault.default.date
+    }),
+    onRegister: _propTypesDefault.default.func
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 
@@ -23776,7 +23807,7 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"6A5ko":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I","prop-types":"4dfy5","./registration-view.scss":"5Ddwd"}],"6A5ko":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -25828,7 +25859,7 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"3pp0v"}],"25rci":[function(require,module,exports) {
+},{"react-refresh/runtime":"3pp0v"}],"5Ddwd":[function() {},{}],"25rci":[function(require,module,exports) {
 var helpers = require("../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25845,10 +25876,9 @@ var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
-var _col = require("react-bootstrap/Col");
-var _colDefault = parcelHelpers.interopDefault(_col);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _loginViewScss = require("./login-view.scss");
 var _s = $RefreshSig$();
 function LoginView(props) {
     _s();
@@ -25859,37 +25889,39 @@ function LoginView(props) {
         console.log(username, password);
         /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
-        className: "justify-content-md-center",
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "login-layout",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 20
+            lineNumber: 24
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
-        md: 8,
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h3", {
+        className: "text-center border border-dark shadow p-3 mb-5 bg-white rounded",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 21
+            lineNumber: 25
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+    }, "myFlix movies!"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        className: "login-form",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 22
+            lineNumber: 26
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 23
+            lineNumber: 27
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        className: "font-weight-bold",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 24
+            lineNumber: 28
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -25898,20 +25930,21 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 25
+            lineNumber: 29
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 28
+            lineNumber: 32
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        className: "font-weight-bold",
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 29
+            lineNumber: 33
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -25920,22 +25953,62 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 30
+            lineNumber: 34
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "primary",
+    })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "login-bt",
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 35
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        className: "font-weight-bold",
+        variant: "success",
+        size: "lg",
         type: "submit",
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 31
+            lineNumber: 36
         },
         __self: this
-    }, "Submit")))));
+    }, "Members Login")), /*#__PURE__*/ _reactDefault.default.createElement("h5", {
+        className: "log-Reg",
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 38
+        },
+        __self: this
+    }, "OR"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "register-bt",
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 39
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        className: "font-weight-bold",
+        variant: "warning",
+        size: "lg",
+        type: "submit",
+        onClick: handleSubmit,
+        __source: {
+            fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 40
+        },
+        __self: this
+    }, "Register to become member")))));
 }
 _s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
+LoginView.propTypes = {
+    user: _propTypesDefault.default.shape({
+        username: _propTypesDefault.default.string.isRequired,
+        password: _propTypesDefault.default.string.isRequired
+    })
+};
 var _c;
 $RefreshReg$(_c, "LoginView");
 
@@ -25944,7 +26017,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"3EBB7":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./login-view.scss":"16WGo","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I","prop-types":"4dfy5"}],"16WGo":[function() {},{}],"3EBB7":[function(require,module,exports) {
 var helpers = require("../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25957,6 +26030,7 @@ parcelHelpers.export(exports, "MovieView", ()=>MovieView
 );
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieViewScss = require("./movie-view.scss");
 class MovieView extends _reactDefault.default.Component {
     keypressCallback(event) {
         console.log(event.key);
@@ -25970,72 +26044,114 @@ class MovieView extends _reactDefault.default.Component {
             className: "movie-view",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 17
+                lineNumber: 19
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-poster",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 18
+                lineNumber: 20
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
             src: movie.ImageURL,
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 19
+                lineNumber: 21
             },
             __self: this
         })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-title",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 21
+                lineNumber: 23
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 22
+                lineNumber: 24
             },
             __self: this
         }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 23
+                lineNumber: 25
             },
             __self: this
         }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-description",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 25
+                lineNumber: 27
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 26
+                lineNumber: 28
             },
             __self: this
         }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 27
+                lineNumber: 29
             },
             __self: this
-        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-genre",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 31
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 33
+            },
+            __self: this
+        }, movie.Genre)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-director",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 35
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 36
+            },
+            __self: this
+        }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 37
+            },
+            __self: this
+        }, movie.Director)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+            className: "back-bt",
             onClick: ()=>{
                 onBackClick(null);
             },
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 29
+                lineNumber: 39
             },
             __self: this
         }, "Back")));
@@ -26047,7 +26163,7 @@ class MovieView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"PKcnf":[function(require,module,exports) {
+},{"react":"3b2NM","./movie-view.scss":"3Cmh0","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"3Cmh0":[function() {},{}],"PKcnf":[function(require,module,exports) {
 var helpers = require("../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26066,60 +26182,60 @@ var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _card = require("react-bootstrap/Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
-var _col = require("react-bootstrap/Col");
-var _colDefault = parcelHelpers.interopDefault(_col);
+var _movieCardScss = require("./movie-card.scss");
 class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movie , onMovieClick  } = this.props;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
-            className: "justify-content-md-center",
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+            className: "card-style",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 13
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
-            md: 8,
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
+            className: "image",
+            src: movie.ImageURL,
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 14
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 15
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
-            variant: "top",
-            src: movie.ImageURL,
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+            className: "card-title",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 16
             },
             __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+        }, movie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            className: "card-desc",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 17
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+        }, movie.Description), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            className: "card-genre",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 18
             },
             __self: this
-        }, movie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+        }, movie.Genre), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            className: "card-director",
             __source: {
                 fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 19
             },
             __self: this
-        }, movie.Description), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, movie.Director), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             onClick: ()=>onMovieClick(movie)
             ,
             variant: "link",
@@ -26128,14 +26244,23 @@ class MovieCard extends _reactDefault.default.Component {
                 lineNumber: 20
             },
             __self: this
-        }, "Open"))))));
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "bg-secondary btn btn-outline-light",
+            __source: {
+                fileName: "C:\\Users\\Sotongli\\Documents\\CareerFoundry\\CareerFoundry\\Full Stack Immersion\\3.1 Intro to Frameworks & Libraries\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 20
+            },
+            __self: this
+        }, "Show Details")))));
     }
 }
 MovieCard.propTypes = {
     movie: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
-        ImageURL: _propTypesDefault.default.string.isRequired
+        ImageURL: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.string.isRequired,
+        Director: _propTypesDefault.default.string.isRequired
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired
 };
@@ -26145,7 +26270,7 @@ MovieCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"1CZWQ":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","./movie-card.scss":"4uQOM","@parcel/transformer-js/src/esmodule-helpers.js":"3xBS9","../../../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"J3e4I"}],"1CZWQ":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
@@ -26316,7 +26441,7 @@ var _default = CardImg;
 exports.default = _default;
 module.exports = exports["default"];
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"3Mt3t":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"4uQOM":[function() {},{}],"3Mt3t":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
