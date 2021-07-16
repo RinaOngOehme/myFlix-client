@@ -56,16 +56,16 @@ export class MainView extends React.Component {
       <div className="main-view">
         {selectedMovie
           ? (
-            <Row className="justify-content-md-center">
-              <Col md={8}>
+            <Row className="row-styles">
+              <Col md={6}>
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
               </Col>
             </Row>
           )
           : (
-            <Row className="justify-content-md-center">
+            <Row className="row-styles">
               {movies.map(movie => (
-                <Col md={3}>
+                <Col md={4}>
                   <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
                 </Col>
               ))}
