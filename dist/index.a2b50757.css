@@ -1,4 +1,108 @@
 .my-flix {
   color: steelblue;
 }
+
+.login-form {
+  padding: 25px;
+  margin-top: 30px;
+  color: black;
+}
+
+.login-layout {
+  padding: 25px;
+  margin-top: 10px;
+  display: flexbox;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  font-style: normal;
+  font-weight: bolder;
+  background-color: #bdc3c9;
+  color: black;
+}
+
+.login-bt {
+  display: flexbox;
+  text-align: center;
+  margin-top: 50px;
+  display: flexbox;
+}
+
+.register-bt {
+  display: flexbox;
+  text-align: center;
+  margin-top: 30px;
+  display: flexbox;
+}
+
+.log-Reg {
+  display: flexbox;
+  text-align: center;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: bolder;
+  color: black;
+}
+.movie-view {
+  margin-top: 20px;
+  padding: 25px;
+}
+
+.movie-title {
+  margin-top: 20px;
+  text-align: left;
+  display: inline-block;
+}
+
+.label {
+  margin-top: 20px;
+  font-weight: bolder;
+  color: black;
+  text-align: left;
+  display: flexbox;
+}
+
+.value {
+  margin-top: 20px;
+  text-align: left;
+  display: flexbox;
+  padding: 5px;
+}
+
+.back-bt {
+  padding: 5px;
+  margin-top: 20px;
+  font-weight: bolder;
+  color: black;
+  text-align: left;
+}
+.card-style {
+  margin-top: 25px;
+  padding: 15x;
+  display: inline-flexbox;
+}
+
+.card-title {
+  font-weight: bolder;
+  color: black;
+  text-align: left;
+  display: inline-flexbox;
+  width: 100%;
+}
+
+.card-desc {
+  font-weight: normal;
+  text-align: left;
+  display: inline-flexbox;
+  width: 100%;
+}
+
+.image {
+  padding-top: 10px;
+  margin-left: 20px;
+  width: 200px;
+  height: 250px;
+}
 /*# sourceMappingURL=index.a2b50757.css.map */
