@@ -1,5 +1,48 @@
 .login-form
 {
-display: block;
-width: 100%
+padding:25px;
+margin-top: 30px;
+color: black;
+
+}
+.login-layout {
+  padding:25px;
+  margin-top: 10px;
+  display: flexbox;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align:left;
+  font-style: normal;
+  font-weight: bolder;
+  background-color: rgb(189, 195, 201);
+  color: black;  
+
+ }
+
+.login-bt{
+  display: flexbox;
+  text-align:center;
+  margin-top: 50px;
+  display: flexbox;
+  
+}
+
+.register-bt {
+  display: flexbox;
+  text-align:center;
+  margin-top: 30px;
+  display: flexbox;
+ 
+}
+
+.log-Reg{
+  display: flexbox;
+  text-align:center;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: bolder;
+  color: black;
+ 
 }
