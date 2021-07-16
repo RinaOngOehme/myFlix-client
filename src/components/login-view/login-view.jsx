@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
+
+
+
 
 import './login-view.scss';
 
@@ -17,16 +21,32 @@ export function LoginView(props) {
   };
 
   return (
-    <Form className="login-form">
-      <Form.Group className="mb-3" controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
+    <div className="login-layout">
+      <h3 className="text-center border border-dark shadow p-3 mb-5 bg-white rounded">myFlix movies!</h3>
+      <Form className="login-form">
+        <Form.Group controlId="formUsername">
+          <Form.Label className="font-weight-bold">Username:</Form.Label>
+          <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
-    </Form>
+        <Form.Group controlId="formPassword">
+          <Form.Label className="font-weight-bold">Password:</Form.Label>
+          <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
+        <div className="login-bt">
+          <Button className="font-weight-bold" variant="success" size="lg" type="submit" onClick={handleSubmit}>Members Login</Button>
+        </div>
+        <h5 className="log-Reg">OR</h5>
+        <div className="register-bt">
+          <Button className="font-weight-bold" variant="warning" size="lg" type="submit" onClick={handleSubmit}>Register to become member</Button>
+        </div>
+      </Form>
+    </div>
   );
 }
+
+LoginView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }),
+};
