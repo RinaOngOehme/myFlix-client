@@ -23,28 +23,31 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Row className="justify-content-md-center">
-      <Col md={8}>
-        <Form>
-          <Form.Group className="mb-3" controlId="formUsername">
-            <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password:</Form.Label>
-            <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
-          <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBirthday">
-            <Form.Label>Birthday(YYYY-MM-DD):</Form.Label>
-            <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
-          </Form.Group>
-          <Button variant="warning" type="submit" onClick={handleSubmit}>Register</Button>
-        </Form>
-      </Col>
-    </Row>
+
+    <Col md={8}>
+      <Form className="registration-form">
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId="formBirthday">
+          <Form.Label>Birthday (YYYY-MM-DD):</Form.Label>
+          <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
+        </Form.Group>
+        <Button variant="warning" type="submit" onClick={handleSubmit}>Register</Button>
+        <div className="back-bt">
+          <Button variant="secondary" type="submit" onClick={handleSubmit}>Back</Button>
+        </div>
+      </Form>
+    </Col>
+
   );
 }
 
