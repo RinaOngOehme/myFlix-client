@@ -1,11 +1,27 @@
 .card-style{
-  width: '18rem'
-}
+  margin-top: 25px;
+  padding: 15x;
+  display: inline-flexbox;
+  }
 
 .card-title{
-  font: bold
+  font-weight: bolder;
+  color: black;
+  text-align: left;
+  display: inline-flexbox;
+  width: 100%
 }
 
 .card-desc{
+  font-weight: normal;
+  text-align: left;
+  display:  inline-flexbox;
   width: 100%
+}
+
+.image {
+ padding-top: 10px;
+ margin-left: 20px;
+ width: 200px;
+ height: 250px;
 }
