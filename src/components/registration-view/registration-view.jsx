@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PropTypes from 'prop-types';
+import logo from 'url:../../../public/myFlix-logo.svg';
 
 import './registration-view.scss';
 
@@ -23,30 +24,29 @@ export function RegistrationView(props) {
   };
 
   return (
-
-    <Col md={8}>
-      <Form className="registration-form">
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-        </Form.Group>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
-        </Form.Group>
-        <Form.Group controlId="formBirthday">
-          <Form.Label>Birthday (YYYY-MM-DD):</Form.Label>
-          <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
-        </Form.Group>
-        <Button variant="warning" type="submit" onClick={handleSubmit}>Register</Button>
-        <div className="back-bt">
-          <Button variant="secondary" type="submit" onClick={handleSubmit}>Back</Button>
-        </div>
-      </Form>
-    </Col>
+    <Form className="registration-form">
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
+      <Form.Group controlId="formEmail">
+        <Form.Label>Email:</Form.Label>
+        <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlId="formBirthday">
+        <Form.Label>Birthday (YYYY-MM-DD):</Form.Label>
+        <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
+      </Form.Group>
+      <div className="register-bt">
+        <Button className="font-weight-bold" variant="warning" type="submit" onClick={handleSubmit}>Register Now!</Button>
+      </div>
+      <div className="back-bt">
+        <Button className="font-weight-bold" variant="secondary" type="submit" onClick={handleSubmit}>Back to Login</Button>
+      </div>
+    </Form>
 
   );
 }
