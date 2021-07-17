@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PropTypes from 'prop-types';
-import logo from '../../../public/myFlix-logo.svg';
+import logo from 'url:../../../public/myFlix-logo.svg';
 
 import './registration-view.scss';
 
