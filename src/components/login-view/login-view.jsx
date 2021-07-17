@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { RegistrationView } from '../registration-view/registration-view';
-import logo from 'url:../../../public/myFlix-logo.svg';
+import logo from '../../../public/myFlix-logo.svg';
 
 import './login-view.scss';
 
