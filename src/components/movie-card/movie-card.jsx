@@ -15,8 +15,8 @@ export class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title className="card-title">{movie.Title}</Card.Title>
           <Card.Text className="card-desc">{movie.Description}</Card.Text>
-          <Card.Text className="card-genre">{movie.Genre}</Card.Text>
-          <Card.Text className="card-director">{movie.Director}</Card.Text>
+          <Card.Text className="card-genre">{movie.Genre.Name}</Card.Text>
+          <Card.Text className="card-director">{movie.Director.Name}</Card.Text>
           <Button onClick={() => onMovieClick(movie)} variant="link"><span className="bg-secondary btn btn-outline-light">Show Details</span></Button>
         </Card.Body>
       </Card>
