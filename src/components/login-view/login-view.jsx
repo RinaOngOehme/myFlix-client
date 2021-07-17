@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { RegistrationView } from '../registration-view/registration-view';
+import logo from 'url:../../../public/myFlix-logo.svg';
 
 import './login-view.scss';
 
@@ -25,7 +26,7 @@ export function LoginView(props) {
 
   return (
     <div className="login-layout">
-      <h3 className="text-center border border-dark shadow p-3 mb-5 bg-white rounded">myFlix movies!</h3>
+      <img className="myFlix-logo" src={logo} alt="logo" />
       {
         !loginForm ? <RegistrationView /> :
           <Form className="login-form">
