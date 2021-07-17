@@ -1,12 +1,19 @@
+
 .registration-form {
-padding:25px;
 margin-top: 30px;
 color: black;
-}
+display: inline-flexbox;
+  }
+
+.register-bt{
+  display: inline-block;
+  text-align:center;
+  margin-top: 30px;
+  }
 
 .back-bt{
-  display: flexbox;
+  display: inline-block;
   text-align:center;
-  margin-top: 50px;
+  margin-top: 30px;
   display: flexbox
-}
+ }
