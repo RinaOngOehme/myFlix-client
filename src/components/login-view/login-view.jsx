@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
+import axios from 'axios';
+
 import PropTypes from 'prop-types';
 import { RegistrationView } from '../registration-view/registration-view';
 import logo from 'url:../../../public/myFlix-logo.svg';
@@ -14,10 +17,18 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    /* send a request to the server for authentication */
+    axios.post('https://myflixdb9278.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+      .then(response => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch(e => {
+        console.log('no such user')
+      });
   };
 
   const toggleForm = () => {
