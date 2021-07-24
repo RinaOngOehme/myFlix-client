@@ -11,6 +11,7 @@ export class DirectorView extends React.Component {
     return (
       <div className="director-view">
         <div className="director-name">
+          <span className="label">Director's Name: </span>
           <span className="value">{director.Name}</span>
         </div>
         <div className="director-birthyear">
