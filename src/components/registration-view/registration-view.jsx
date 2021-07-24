@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+
+// import from react bootstrap
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import PropTypes from 'prop-types';
+
+// import logo
 import logo from 'url:../../../public/myFlix-logo.svg';
 
+// import registration view styling
 import './registration-view.scss';
 
 
@@ -20,7 +26,6 @@ export function RegistrationView(props) {
     console.log(username, password, email, birthday);
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
-    //props.onLoggedIn(username);
   };
 
   return (
