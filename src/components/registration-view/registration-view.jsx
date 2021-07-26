@@ -42,7 +42,7 @@ export function RegistrationView(props) {
         <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
       </Form.Group>
       <Form.Group controlId="formBirthday">
-        <Form.Label>Birthday (YYYY-MM-DD):</Form.Label>
+        <Form.Label>Birthday:</Form.Label>
         <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
       </Form.Group>
       <div className="register-bt">
