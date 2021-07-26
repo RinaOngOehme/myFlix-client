@@ -23,6 +23,8 @@ import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 
+
+
 // import logo
 import logo from 'url:../../../public/myFlix-logo.svg';
 
@@ -39,9 +41,10 @@ export class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
+      //this.setState({
+      //user: JSON.parse(localStorage.getItem('user'))
+      //});
+      this.getUsers(accessToken);
       this.getMovies(accessToken);
     }
   }
@@ -56,7 +59,7 @@ export class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
-      user: authData.user.Username
+      user: authData.user
     });
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
@@ -78,15 +81,15 @@ export class MainView extends React.Component {
       });
   }
 
-  //Qn: how to get details of only logged in user and not the entire list?
   getUsers(token) {
-    axios.get('https://myflixdb9278.herokuapp.com/users', {
+    const name = localStorage.getItem('user')
+    axios.get(`https://myflixdb9278.herokuapp.com/users/${name}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
         //assign the result to the state
         this.setState({
-          users: response.data
+          user: response.data
         });
       })
       .catch(function (error) {
@@ -97,19 +100,21 @@ export class MainView extends React.Component {
 
   onLoggedOut() {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // localStorage.removeItem('user');
     this.setState({
       user: null
     });
   }
   render() {
     const { movies, user } = this.state;
-
+    const token = localStorage.getItem('token')
+    console.log(this.state)
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
           <Navbar fixed="top" bg="light">
             <Navbar.Brand>***Welcome to myFlix Movies!***</Navbar.Brand>
+
             <Button className="ml-auto" onClick={() => { this.onLoggedOut() }}>Logout</Button>
           </Navbar>
 
@@ -135,14 +140,14 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          //profile view!!!
-          <Route path="/users/:username" render={(match, history) => {
-            if (!user)
-              return <Col md={6}>
-                <ProfileView onLoggedIn={user => this.onLoggedIn(user)}
-                  movies={movies} user={user}
-                  onBackClick={() => history.goBack()} />
-              </Col>
+
+          <Route path="/profile" render={(match, history) => {
+            if (!token) return <Redirect to="/" />
+            return <Col md={6}>
+              <ProfileView onLoggedIn={user => this.onLoggedIn(user)}
+                movies={movies} user={user}
+                onBackClick={() => history.goBack()} />
+            </Col>
           }} />
 
           <Route path="/movies/:title" render={({ match, history }) => {
