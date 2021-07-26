@@ -153,7 +153,9 @@ export class ProfileView extends React.Component {
     const { movies, user } = this.state;
     const { Username, Password, Email, Birthday, FavoriteMovies } = this.state.user;
     const { UsernameError, EmailError, PasswordError, BirthdayError } = this.state.user;
-
+    const FavoriteMovies = movies.filter((movie) => {
+      return user.favoriteMovies.includes(movie.Title);
+    });
     return (
       <div className="profile-view">
 
