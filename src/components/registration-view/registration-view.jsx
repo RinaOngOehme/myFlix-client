@@ -14,6 +14,8 @@ import logo from 'url:../../../public/myFlix-logo.svg';
 // import registration view styling
 import './registration-view.scss';
 
+// import link from react router dom
+import { Link } from "react-router-dom";
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
@@ -29,30 +31,34 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Form className="registration-form">
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
-      <Form.Group controlId="formEmail">
-        <Form.Label>Email:</Form.Label>
-        <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
-      </Form.Group>
-      <Form.Group controlId="formBirthday">
-        <Form.Label>Birthday:</Form.Label>
-        <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
-      </Form.Group>
-      <div className="register-bt">
-        <Button className="font-weight-bold" variant="warning" type="submit" onClick={handleSubmit}>Register Now!</Button>
-      </div>
-      <div className="back-bt">
-        <Button className="font-weight-bold" variant="secondary" type="submit" onClick={handleSubmit}>Back to Login</Button>
-      </div>
-    </Form>
-
+    <div className="registration-layout">
+      <img className="myFlix-logo" src={logo} alt="logo" />
+      <Form className="registration-form">
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId="formBirthday">
+          <Form.Label>Birthday:</Form.Label>
+          <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
+        </Form.Group>
+        <div className="register-bt">
+          <Button className="font-weight-bold" variant="warning" type="submit" onClick={handleSubmit}>Register Now!</Button>
+        </div>
+        <div className="back-bt">
+          <Link to={`/`}>
+            <Button className="font-weight-bold" variant="secondary" type="submit" >Back to Login</Button>
+          </Link>
+        </div>
+      </Form>
+    </div>
   );
 }
 
