@@ -23,7 +23,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 
-
+import { Link } from "react-router-dom";
 
 // import logo
 import logo from 'url:../../../public/myFlix-logo.svg';
@@ -100,7 +100,7 @@ export class MainView extends React.Component {
 
   onLoggedOut() {
     localStorage.removeItem('token');
-    // localStorage.removeItem('user');
+    localStorage.removeItem('user');
     this.setState({
       user: null
     });
@@ -109,13 +109,19 @@ export class MainView extends React.Component {
     const { movies, user } = this.state;
     const token = localStorage.getItem('token')
     console.log(this.state)
+
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
           <Navbar fixed="top" bg="light">
             <Navbar.Brand>***Welcome to myFlix Movies!***</Navbar.Brand>
-
-            <Button className="ml-auto" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+            <Link to={`/`}>
+              <Button className="ml-auto btn btn-light">Login</Button>
+            </Link>
+            <Link to={`/profile`}>
+              <Button className="ml-auto btn btn-light">Profile</Button>
+            </Link>
+            <Button className="ml-auto btn btn-light" onClick={() => { this.onLoggedOut() }}>Logout</Button>
           </Navbar>
 
           <Route exact path="/" render={() => {
@@ -127,7 +133,7 @@ export class MainView extends React.Component {
             <div className="main-view" />;
             return movies.map(m => (
               <Col md={6} key={m._id}>
-                <MovieCard movie={m} />
+                <MovieCard key={m._id} movie={m} />
               </Col>
 
             ))
@@ -141,13 +147,11 @@ export class MainView extends React.Component {
           }} />
 
 
-          <Route path="/profile" render={(match, history) => {
-            if (!token) return <Redirect to="/" />
-            return <Col md={6}>
-              <ProfileView onLoggedIn={user => this.onLoggedIn(user)}
-                movies={movies} user={user}
-                onBackClick={() => history.goBack()} />
-            </Col>
+          <Route path="/profile" render={() => {
+            if (!user)
+              return <Col md={6}>
+                <ProfileView />
+              </Col>
           }} />
 
           <Route path="/movies/:title" render={({ match, history }) => {
