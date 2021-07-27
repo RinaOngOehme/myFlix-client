@@ -10,6 +10,9 @@ import logo from 'url:../../../public/myFlix-logo.svg';
 
 import './login-view.scss';
 
+// import link from react router dom
+import { Link } from "react-router-dom";
+
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -54,7 +57,9 @@ export function LoginView(props) {
             </div>
             <h5 className="log-Reg">OR</h5>
             <div className="register-bt">
-              <Button className="font-weight-bold" variant="warning" size="lg" type="submit" onClick={toggleForm}>Register to become a member</Button>
+              <Link to={`/register`}>
+                <Button className="font-weight-bold" variant="warning" size="lg" type="submit" onClick={toggleForm}>Register to become a member</Button>
+              </Link>
             </div>
           </Form>
       }
