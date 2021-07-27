@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import './profile-view.scss';
 
 
+
 export class ProfileView extends React.Component {
 
   constructor(props) {
@@ -36,15 +37,6 @@ export class ProfileView extends React.Component {
       }
     }
   }
-
-
-
-  componentDidMount() {
-    let accessToken = localStorage.getItem("token");
-    this.getUserInfo(accessToken);
-    console.log(this.state)
-  }
-
 
   getUserInfo(token) {
     const name = localStorage.getItem('user')
@@ -114,48 +106,11 @@ export class ProfileView extends React.Component {
   }
 
 
-
-  formValidation() {
-    let UsernameError = {};
-    let EmailError = {};
-    let PasswordError = {};
-    let BirthdayError = {};
-    let isValid = true;
-    if (this.state.Username.trim().length < 5) {
-      UsernameError.usernameTooShort = "Username must be Alphanumeric and contains more than 5 characters";
-      isValid = false;
-    }
-    if (this.state.Password.trim().length < 5) {
-      PasswordError.passwordTooShort = "Password must be minimum 6 characters) ";
-      isValid = false;
-    }
-    if (!(this.state.Email && this.state.Email.includes(".") && this.state.Email.includes("@"))) {
-      EmailError.emailNotEmail = "A valid email address is required.";
-      isValid = false;
-    }
-    if (this.state.Birthday === '') {
-      BirthdayError.birthdayEmpty = "Please enter your Birthday.";
-      isValid = false;
-    }
-    this.setState({
-      UsernameError: UsernameError,
-      PasswordError: PasswordError,
-      EmailError: EmailError,
-      BirthdayError: BirthdayError,
-    })
-    return isValid;
-  };
-
-
-
-
   render() {
     const { movies, user } = this.state;
     const { Username, Password, Email, Birthday, FavoriteMovies } = this.state.user;
     const { UsernameError, EmailError, PasswordError, BirthdayError } = this.state.user;
-    const FavoriteMovies = movies.filter((movie) => {
-      return user.favoriteMovies.includes(movie.Title);
-    });
+
     return (
       <div className="profile-view">
 
@@ -196,7 +151,6 @@ export class ProfileView extends React.Component {
               );
             })}
           </Form.Group>
-
           <Row>
             {FavoriteMovies.map((movie) => {
               return (
@@ -218,7 +172,6 @@ export class ProfileView extends React.Component {
             })}
           </Row>
 
-
           <div className="update-bt">
             <Button className="font-weight-bold" variant="warning" type="submit" >Update Change</Button>
           </div>
@@ -236,25 +189,5 @@ export class ProfileView extends React.Component {
   }
 }
 
-ProfileView.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    birthday: PropTypes.date
-  }).isRequired,
-  token: PropTypes.string.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImageURL: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string
-    }).isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string
-    })
-  })).isRequired,
-  onLoggedIn: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-}
+
+
