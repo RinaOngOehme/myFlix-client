@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // import from react bootstrap
 
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 
 import PropTypes from 'prop-types';
 
@@ -30,6 +30,7 @@ export class ProfileView extends React.Component {
         Email: "",
         Birthday: "",
         FavoriteMovies: [],
+        movies: [],
         UsernameError: "",
         EmailError: "",
         PasswordError: "",
@@ -47,7 +48,11 @@ export class ProfileView extends React.Component {
         //assign the result to the state
         console.log(response)
         this.setState({
-          user: response.data
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies,
         });
       })
       .catch(function (error) {
@@ -55,20 +60,9 @@ export class ProfileView extends React.Component {
       });
   }
 
-  addMovie(movie) {
-    const token = localStorage.getItem("token");
-    const name = localStorage.getItem("user");
-    axios.add(`https://myflixdb9278.herokuapp.com/users/${name}` + '/movies/' + movie.Title,
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-      .then((response) => {
-        console.log(response);
-        alert(movie.Title + " has been added to your list of favorite movies!");
-        window.location.pathname = `/users/${name}`
-      })
-  }
 
-  removeMovie(movie) {
+  removeMovie(e, movie) {
+    e.preventDefault();
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("user");
     axios.delete(`https://myflixdb9278.herokuapp.com/users/${name}` + '/movies/' + movie.Title,
@@ -81,7 +75,8 @@ export class ProfileView extends React.Component {
       })
   }
 
-  handleDelete() {
+  handleDelete(e) {
+    e.preventDefault();
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("user");
     axios.delete(`https://myflixdb9278.herokuapp.com/users/${name}`,
@@ -100,14 +95,33 @@ export class ProfileView extends React.Component {
 
 
   handleSubmit(e) {
-    e.preventDefault()
-    console.log(e.currentTarget.elements.formUsername.value)
-    console.log(e.currentTarget.elements.formEmail.value)
+    e.preventDefault();
+    const name = localStorage.getItem('user')
+    const token = localStorage.getItem("token");
+    axios.put(`https://myflixdb9278.herokuapp.com/users/${name}`,
+      {
+        Username: this.state.username,
+        Password: this.state.password,
+        Email: this.state.email,
+        Birthday: this.state.birthday
+      },
+
+      { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => {
+        const data = response.data;
+        localStorage.setItem("user", data.username);
+        console.log(data);
+        alert(user + " has been updated");
+        window.location.pathname = `/users/${data.username}`;
+      })
+      .catch(function (error) {
+        console.log(error.response.data);
+      })
   }
 
 
   render() {
-    const { movies, user } = this.state;
+    const { movies } = this.props;
     const { Username, Password, Email, Birthday, FavoriteMovies } = this.state.user;
     const { UsernameError, EmailError, PasswordError, BirthdayError } = this.state.user;
 
@@ -152,24 +166,31 @@ export class ProfileView extends React.Component {
             })}
           </Form.Group>
           <Row>
-            {FavoriteMovies.map((movie) => {
-              return (
-                <Col md={3} key={movie.Title}>
-                  <div key={movie.Title}>
-                    <Card>
-                      <Card.Img className="card-img" variant="top" src={movies.ImageURL} />
-                      <Card.Body>
-                        <Link to={`/movies/${movies.Title}`}>
-                          <Card.Title>{movies.Title}</Card.Title>
-                        </Link>
-                        <Button variant="success" onClick={() => this.addMovie(movie)}>Add Movie to Favorites</Button>
-                        <Button variant="danger" onClick={() => this.removeMovie(movie)}>Remove Movie from Favorites</Button>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </Col>
-              )
-            })}
+            <Card className='profile-card' border='info'>
+              <Card.Title className='profile-title'>Favorite Movies</Card.Title>
+              {FavoriteMovies.length === 0 && <div className='card-content'>You don't have any favorite movies yet!</div>}
+              <div className='favorites-container'>
+                {FavoriteMovies.length > 0 &&
+                  movies.map((movie) => {
+                    if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
+                      return (
+                        <div key={movie._id}>
+                          <Card style={{ width: '16rem', float: 'left' }}>
+                            <Link to={`/movies/${movie._id}`}>
+                              <Card.Img className='favorites-movie' variant="top" src={movie.ImageURL} />
+                            </Link>
+                            <Card.Body className='movie-card-body'>
+                              <Button size='sm' className='profile-button remove-favorite' variant='danger' onClick={(e) => this.removeFavorite(e, movie._id)}>
+                                Remove Favorite Movie
+                              </Button>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                      );
+                    }
+                  })}
+              </div>
+            </Card>
           </Row>
 
           <div className="update-bt">
@@ -189,5 +210,15 @@ export class ProfileView extends React.Component {
   }
 }
 
+
+ProfileView.propTypes = {
+  users: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string,
+    FavoriteMovies: PropTypes.array,
+
+  })
+};
 
 
