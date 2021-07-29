@@ -41,9 +41,10 @@ export class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      //this.setState({
-      //user: JSON.parse(localStorage.getItem('user'))
-      //});
+      this.setState({
+        //user: JSON.parse(localStorage.getItem('user'))
+        //user: localStorage.getItem('user')
+      });
       this.getUsers(accessToken);
       this.getMovies(accessToken);
     }
@@ -184,6 +185,8 @@ export class MainView extends React.Component {
             </Col>
           }
           } />
+
+
 
         </Row>
       </Router >
