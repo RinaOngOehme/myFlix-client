@@ -22,13 +22,72 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('')
+  //the following consts are to set states for form validation
+  const [usernameErr, setUsernameErr] = useState({});
+  const [passwordErr, setPasswordErr] = useState({});
+  const [emailErr, setEmailErr] = useState({});
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthday);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
+    const isValid = formValidation();
+    axios.post('https://myflixdb9278.herokuapp.com/users', {
+      username: username,
+      password: password,
+      email: email,
+      birthday: birthday
+    })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open('/', '_self');
+      })
+      .catch(e => {
+        console.log('error registering the user')
+      });
   };
+  const formValidation = () => {
+    const usernameErr = {};
+    const passwordErr = {};
+    const emailErr = {};
+
+    let isValid = true;
+
+    if (username.trim().length < 5) {
+      usernameErr.usernameShort = "Username needs to be more than 5 characters.";
+      isValid = false;
+    }
+
+    if (!username.match(/^[0-9a-zA-Z]+$/)) {
+      usernameErr.usernameNotAlphanumeric = "Username must only include alphanumeric symbols.";
+      isValid = false;
+    }
+
+    if (password.trim().length === 0) {
+      passwordErr.noPassword = "Password is required.";
+      isValid = false;
+    }
+
+    if (email.trim().length === 0) {
+      emailErr.noEmail = "Email is required.";
+      isValid = false;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+      emailErr.noAtSymbol = "Email is not valid.";
+      isValid = false;
+    }
+
+    /*         if (!email.includes(".")) {
+                emailErr.noDot = "Email is not valid.";
+                isValid = false;
+            } */
+
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    setEmailErr(emailErr);
+    return isValid;
+  }
 
   return (
     <div className="registration-layout">
@@ -38,17 +97,30 @@ export function RegistrationView(props) {
           <Form.Label>Username:</Form.Label>
           <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
         </Form.Group>
+        {Object.keys(usernameErr).map((key) => {
+          return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
+        })}
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
+          <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+        </Form.Group>
+        {Object.keys(passwordErr).map((key) => {
+          return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
+        })}
+
         <Form.Group controlId="formEmail">
           <Form.Label>Email:</Form.Label>
           <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
         </Form.Group>
+        {Object.keys(emailErr).map((key) => {
+          return <div key={key} style={{ color: "red" }}>{emailErr[key]}</div>
+        })}
+
         <Form.Group controlId="formBirthday">
           <Form.Label>Birthday:</Form.Label>
           <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
         </Form.Group>
+
         <div className="register-bt">
           <Button className="font-weight-bold" variant="warning" type="submit" onClick={handleSubmit}>Register Now!</Button>
         </div>
