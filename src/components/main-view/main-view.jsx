@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 // import react bootstrap
 import Row from 'react-bootstrap/Row';
@@ -8,8 +9,10 @@ import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 
 
-// import react router dom
+
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import MoviesList from '../movies-list/movies-list';
+import { setMovies, setUsers } from '../../actions/actions';
 
 // import main view styling
 import './main-view.scss';
@@ -28,12 +31,11 @@ import { Link } from "react-router-dom";
 // import logo
 import logo from 'url:../../../public/myFlix-logo.svg';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      movies: [],
       user: null
     };
   }
@@ -73,9 +75,7 @@ export class MainView extends React.Component {
     })
       .then(response => {
         //assign the result to the state
-        this.setState({
-          movies: response.data
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -107,7 +107,8 @@ export class MainView extends React.Component {
     });
   }
   render() {
-    const { movies, user } = this.state;
+    let { movies } = this.props;
+    let { user } = this.state;
     const token = localStorage.getItem('token')
     console.log(this.state)
 
@@ -115,31 +116,26 @@ export class MainView extends React.Component {
       <Router>
         <Row className="main-view justify-content-md-center">
           <Navbar fixed="top" bg="light">
-            <Navbar.Brand>***Welcome to myFlix Movies!***</Navbar.Brand>
+            <Navbar.Brand className="nav-style">Welcome to myFlix Movies!</Navbar.Brand>
             <Link to={`/`}>
-              <Button className="ml-auto btn btn-light">Login</Button>
+              <Button className="btn btn-light">Login</Button>
             </Link>
             <Link to={`/profile`}>
-              <Button className="ml-auto btn btn-light">Profile</Button>
+              <Button className="btn btn-light">Profile</Button>
             </Link>
-            <Button className="ml-auto btn btn-light" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+
+            <Link to={`/`}>
+              <Button className="btn btn-light" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+            </Link>
           </Navbar>
 
           <Route exact path="/" render={() => {
-            if (!user) return <Col>
-              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-            </Col>
-            if (movies.length === 0)
-              return
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            if (movies.length === 0) return
             <div className="main-view" />;
-            return movies.map(m => (
-              <Col md={6} key={m._id}>
-                <MovieCard key={m._id} movie={m} />
-              </Col>
+            return (<MoviesList movies={movies} />);
+          }} />
 
-            ))
-          }}
-          />
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
             return <Col>
@@ -149,11 +145,12 @@ export class MainView extends React.Component {
 
 
           <Route path="/profile" render={() => {
-            if (!user)
+            if (user)
               return <Col md={6}>
-                <ProfileView />
+                <ProfileView movies={movies} user={user} />
               </Col>
           }} />
+
 
           <Route path="/movies/:title" render={({ match, history }) => {
             if (!user) return <Col>
@@ -185,17 +182,15 @@ export class MainView extends React.Component {
             </Col>
           }
           } />
-
-
-
         </Row>
       </Router >
-
     );
   }
 }
 
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
 
 
-
-export default MainView
+export default connect(mapStateToProps, { setMovies })(MainView);
