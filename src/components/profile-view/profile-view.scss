@@ -15,10 +15,11 @@
 }
 
 .back-bt{
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-right: 10px;
 }
 
-.profile-card{
+.profile-updatecard{
   padding:25px;
   margin-top: 10px;
   margin-bottom: 25px;
@@ -26,3 +27,21 @@
   margin-left: 15px;
   
 }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  }
+
+  .profile-value{
+  font-style: normal;
+  font-weight: bold;
+  background-color: rgb(212, 219, 226);
+  color: black;  
+
+  }
+
+  .card-movietext{
+    text-align:left;
+    margin-left: 20px;
+  }
