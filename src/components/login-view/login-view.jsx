@@ -24,7 +24,6 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = formValidation();
 
     /* send a request to the server for authentication */
     axios.post('https://myflixdb9278.herokuapp.com/login', {
@@ -36,6 +35,7 @@ export function LoginView(props) {
         props.onLoggedIn(data);
       })
       .catch(e => {
+        alert("User Not Found or Incorrect Password, Please Try Again!");
         console.log('no such user')
       });
   };
@@ -43,32 +43,7 @@ export function LoginView(props) {
   const toggleForm = () => {
     setLoginform(!loginForm)
   }
-  const formValidation = () => {
-    const usernameErr = {};
-    const passwordErr = {};
 
-    let isValid = true;
-
-    if (username.trim().length < 5) {
-      usernameErr.usernameShort = "Username needs to be more than 5 characters.";
-      isValid = false;
-    }
-
-    if (!username.match(/^[0-9a-zA-Z]+$/)) {
-      usernameErr.usernameNotAlphanumeric = "Username must only include alphanumeric symbols.";
-      isValid = false;
-    }
-
-    if (password.trim().length === 0) {
-      passwordErr.noPassword = "Password is required.";
-      isValid = false;
-    }
-
-    setUsernameErr(usernameErr);
-    setPasswordErr(passwordErr);
-    return isValid;
-
-  }
 
 
 
@@ -82,16 +57,11 @@ export function LoginView(props) {
               <Form.Label className="font-weight-bold">Username:</Form.Label>
               <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
             </Form.Group>
-            {Object.keys(usernameErr).map((key) => {
-              return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
-            })}
 
             <Form.Group controlId="formPassword">
               <Form.Label className="font-weight-bold">Password:</Form.Label>
               <Form.Control type="password" onChange={e => setPassword(e.target.value)} /></Form.Group>
-            {Object.keys(passwordErr).map((key) => {
-              return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
-            })}
+
             <div className="login-bt">
               <Button className="font-weight-bold" variant="success" size="lg" type="submit" onClick={handleSubmit}>Members Login</Button>
             </div>
