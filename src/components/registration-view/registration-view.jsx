@@ -52,8 +52,8 @@ export function RegistrationView(props) {
 
     let isValid = true;
 
-    if (username.trim().length < 5) {
-      usernameErr.usernameShort = "Username needs to be more than 5 characters.";
+    if (username.trim().length < 6) {
+      usernameErr.usernameShort = "Username needs to be more than 6 characters.";
       isValid = false;
     }
 
