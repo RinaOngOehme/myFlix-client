@@ -7,12 +7,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Navbar';
 
 
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import MoviesList from '../movies-list/movies-list';
 import { setMovies, setUsers } from '../../actions/actions';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 
 // import main view styling
 import './main-view.scss';
@@ -106,8 +108,9 @@ class MainView extends React.Component {
       user: null
     });
   }
+
   render() {
-    let { movies } = this.props;
+    let { movies, visibilityFilter } = this.props;
     let { user } = this.state;
     const token = localStorage.getItem('token')
     console.log(this.state)
@@ -123,7 +126,10 @@ class MainView extends React.Component {
             <Link to={`/profile`}>
               <Button className="btn btn-light">Profile</Button>
             </Link>
-
+            <Nav className="form-inline my-2 my-lg-0">
+              <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </Nav>
             <Link to={`/`}>
               <Button className="btn btn-light" onClick={() => { this.onLoggedOut() }}>Logout</Button>
             </Link>
@@ -189,7 +195,11 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  const { visibilityFilter } = state;
+  return {
+    movies: state.movies,
+    visibilityFilter
+  }
 }
 
 
