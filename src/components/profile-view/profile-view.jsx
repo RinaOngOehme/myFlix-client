@@ -67,6 +67,8 @@ export class ProfileView extends React.Component {
   //});
   //}
 
+
+
   removeMovie(e, movie) {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -100,8 +102,10 @@ export class ProfileView extends React.Component {
   }
 
 
-  handleSubmit(e) {
+
+  handleSubmit = (e) => {
     e.preventDefault();
+    const isValid = formValidation();
     const name = localStorage.getItem('user')
     const token = localStorage.getItem("token");
     axios.put(`https://myflixdb9278.herokuapp.com/users/${name}`,
@@ -124,52 +128,67 @@ export class ProfileView extends React.Component {
         console.log(error.response.data);
       })
   }
-  formValidation() {
-    let usernameErr = {};
-    let passwordErr = {};
-    let emailErr = {};
+
+  handleChange(e) {
+    let { name, value } = e.target;
+    console.log(name, value);
+    this.setState({
+      [name]: value
+    })
+  }
+
+
+  formValidation = () => {
+    const usernameErr = {};
+    const passwordErr = {};
+    const emailErr = {};
 
     let isValid = true;
 
-    if (this.state.username.trim().length < 5) {
-      usernameErr.usernameShort = "Username needs to be more than 5 characters.";
+    if (username.trim().length < 6) {
+      usernameErr.usernameShort = "Username needs to be more than 6 characters.";
       isValid = false;
     }
 
-    if (!this.state.username.match(/^[0-9a-zA-Z]+$/)) {
+    if (!username.match(/^[0-9a-zA-Z]+$/)) {
       usernameErr.usernameNotAlphanumeric = "Username must only include alphanumeric symbols.";
       isValid = false;
     }
 
-    if (this.state.password.trim().length === 0) {
+    if (password.trim().length === 0) {
       passwordErr.noPassword = "Password is required.";
       isValid = false;
     }
 
-    if (this.state.email.trim().length === 0) {
+    if (email.trim().length === 0) {
       emailErr.noEmail = "Email is required.";
       isValid = false;
     }
 
-    if (!this.state.email.includes("@") || !this.state.email.includes(".")) {
+    if (!email.includes("@") || !email.includes(".")) {
       emailErr.noAtSymbol = "Email is not valid.";
       isValid = false;
     }
 
-    this.setState({
-      usernameErr: usernameErr,
-      passwordErr, passwordErr,
-      emailErr: emailErr,
-    })
+    /*         if (!email.includes(".")) {
+                emailErr.noDot = "Email is not valid.";
+                isValid = false;
+            } */
+
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    setEmailErr(emailErr);
     return isValid;
   }
-
 
   render() {
     const { movies, user } = this.props;
     const { Username, Password, Email, Birthday, FavoriteMovies } = user;
     //const { UsernameError, EmailError, PasswordError, BirthdayError } = user;
     const { usernameErr, passwordErr, emailErr } = this.state;
+
+
     return (
       <Container className='profile-view'>
         <Tabs defaultActiveKey='profile' transition={false} className='profile-tabs'>
@@ -179,9 +198,8 @@ export class ProfileView extends React.Component {
               <Card.Body>
                 <Card.Title>Your Profile</Card.Title>
                 <Card.Text className="profile-value">Username: {Username}</Card.Text>
-                <Card.Text className="profile-value">Encrypted Password: {Password}</Card.Text>
                 <Card.Text className="profile-value">Email: {Email}</Card.Text>
-                <Card.Text className="profile-value">Birthday: {Birthday}</Card.Text>
+                <Card.Text className="profile-value">Birthday: {Birthday.slice(0, 10)}</Card.Text>
                 <Button className="font-weight-bold" variant="danger"
                   onClick={() => this.handleDelete()}>Delete Account</Button>
               </Card.Body>
@@ -220,28 +238,28 @@ export class ProfileView extends React.Component {
             <Form className="update-form" onSubmit={this.handleSubmit}>
               <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" defaultValue={Username} />
+                <Form.Control type="text" defaultValue={Username} onChange={this.handleChange.bind(this)} />
               </Form.Group>
               {Object.keys(usernameErr).map((key) => {
                 return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
               })}
               <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" defaultValue={Password} />
+                <Form.Control type="password" defaultValue={Password} onChange={this.handleChange.bind(this)} />
               </Form.Group>
               {Object.keys(passwordErr).map((key) => {
                 return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
               })}
               <Form.Group controlId="formEmail">
                 <Form.Label>Email:</Form.Label>
-                <Form.Control type="email" defaultValue={Email} />
+                <Form.Control type="email" defaultValue={Email} onChange={this.handleChange.bind(this)} />
               </Form.Group>
               {Object.keys(emailErr).map((key) => {
                 return <div key={key} style={{ color: "red" }}>{emailErr[key]}</div>
               })}
               <Form.Group controlId="formBirthday">
                 <Form.Label>Birthday:</Form.Label>
-                <Form.Control type="date" defaultValue={Birthday} />
+                <Form.Control type="date" pattern="\d{4}-\d{2}-\d{2}" defaultValue={Birthday.slice(0, 10)} onChange={this.handleChange.bind(this)} />
 
               </Form.Group>
 
