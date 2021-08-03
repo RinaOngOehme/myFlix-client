@@ -21,14 +21,18 @@ export class MovieView extends React.Component {
     e.preventDefault();
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("user");
-    axios.put(`https://myflixdb9278.herokuapp.com/users/${name}` + '/movies/' + movie.Title,
+    axios.post(`https://myflixdb9278.herokuapp.com/users/${name}/movies/${movie}`, {},
       { headers: { Authorization: `Bearer ${token}` } }
     )
       .then((response) => {
         console.log(response);
-        alert(movie.Title + " has been added to your list of favorite movies!");
-        window.location.pathname = `/users/${name}`
+        alert("Movie has been added to your list of favorite movies!");
+
+        window.location.pathname = `/profile`
       })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -62,7 +66,7 @@ export class MovieView extends React.Component {
           </Link>
         </div>
 
-        <Button size='sm' className='add-favorite' variant='warning' onClick={(e) => this.addMovie(e, movie._id)}>
+        <Button size='sm' className='add-favorite' variant='warning' onClick={(e) => this.addMovie(e, movie.Title)}>
           Add Movie to Favorites
         </Button>
 
