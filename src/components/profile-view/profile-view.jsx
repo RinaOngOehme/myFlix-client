@@ -34,6 +34,10 @@ export class ProfileView extends React.Component {
        movies: [],
        }
    } */
+      username: "",
+      password: "",
+      email: "",
+      birthday: "",
       usernameErr: "",
       passwordErr: "",
       emailErr: "",
@@ -107,10 +111,10 @@ export class ProfileView extends React.Component {
 
 
 
-  handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
 
-    const name = localStorage.getItem('user')
+    const name = localStorage.getItem("user")
     const token = localStorage.getItem("token");
     const isValid = this.formValidation();
     if (isValid) {
@@ -125,16 +129,18 @@ export class ProfileView extends React.Component {
         { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
           const data = response.data;
-          localStorage.setItem("user", data.username);
+          localStorage.setItem("user", this.state.username);
+
           console.log(data);
-          alert(user + " has been updated");
-          window.location.pathname = `/users/${data.username}`;
+          alert("Update was successful!");
+          window.location.pathname = `/profile`;
         })
         .catch(function (error) {
           console.log(error.response.data);
         })
     }
   }
+
   handleChange(e) {
     let { name, value } = e.target;
     console.log(name, value);
@@ -237,7 +243,7 @@ export class ProfileView extends React.Component {
 
           <Tab className='tab-item' eventKey='update-profile' title='Update User Profile'>
 
-            <Form className="update-form" onSubmit={this.handleSubmit}>
+            <Form className="update-form">
               <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control type="text" name="username" placeholder="Change username" value={this.state.username || ''} onChange={(e) => this.handleChange(e)} />
@@ -266,7 +272,7 @@ export class ProfileView extends React.Component {
               </Form.Group>
 
               <div className="update-bt">
-                <Button className="font-weight-bold" variant="warning" type="submit" >Update Change</Button>
+                <Button className="font-weight-bold" variant="warning" type="submit" onSubmit={this.handleSubmit} >Update Change</Button>
               </div>
             </Form>
 
