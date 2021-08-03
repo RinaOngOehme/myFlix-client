@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container';
 
 import PropTypes from 'prop-types';
 
-import axios from 'axios'
+import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 
@@ -73,25 +73,29 @@ export class ProfileView extends React.Component {
     e.preventDefault();
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("user");
-    axios.delete(`https://myflixdb9278.herokuapp.com/users/${name}` + '/movies/' + movie.Title,
+    axios.delete(`https://myflixdb9278.herokuapp.com/users/${name}/movies/${movie}`,
       { headers: { Authorization: `Bearer ${token}` } }
     )
       .then((response) => {
         console.log(response);
-        alert(movie.Title + " has been removed from your list of favorite movies!");
-        window.location.pathname = `/users/${name}`
+        alert("Movie has been removed from your list of favorite movies!");
+        this.componentDidMount();
+        window.location.pathname = `/profile`
       })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  handleDelete(e) {
-    e.preventDefault();
+  handleDelete() {
+
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("user");
     axios.delete(`https://myflixdb9278.herokuapp.com/users/${name}`,
       { headers: { Authorization: `Bearer ${token}` } }
     )
       .then(() => {
-        alert(user + "account has been deleted!");
+        alert("Sorry That You Are Leaving Us, Your Account Has Been Deleted!");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         window.location.pathname = "/";
@@ -105,30 +109,32 @@ export class ProfileView extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = formValidation();
+
     const name = localStorage.getItem('user')
     const token = localStorage.getItem("token");
-    axios.put(`https://myflixdb9278.herokuapp.com/users/${name}`,
-      {
-        Username: this.state.username,
-        Password: this.state.password,
-        Email: this.state.email,
-        Birthday: this.state.birthday
-      },
+    const isValid = this.formValidation();
+    if (isValid) {
+      axios.put(`https://myflixdb9278.herokuapp.com/users/${name}`,
+        {
+          Username: this.state.username,
+          Password: this.state.password,
+          Email: this.state.email,
+          Birthday: this.state.birthday
+        },
 
-      { headers: { Authorization: `Bearer ${token}` } })
-      .then((response) => {
-        const data = response.data;
-        localStorage.setItem("user", data.username);
-        console.log(data);
-        alert(user + " has been updated");
-        window.location.pathname = `/users/${data.username}`;
-      })
-      .catch(function (error) {
-        console.log(error.response.data);
-      })
+        { headers: { Authorization: `Bearer ${token}` } })
+        .then((response) => {
+          const data = response.data;
+          localStorage.setItem("user", data.username);
+          console.log(data);
+          alert(user + " has been updated");
+          window.location.pathname = `/users/${data.username}`;
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        })
+    }
   }
-
   handleChange(e) {
     let { name, value } = e.target;
     console.log(name, value);
@@ -138,47 +144,43 @@ export class ProfileView extends React.Component {
   }
 
 
-  formValidation = () => {
-    const usernameErr = {};
-    const passwordErr = {};
-    const emailErr = {};
+  formValidation() {
+    let usernameErr = {};
+    let passwordErr = {};
+    let emailErr = {};
 
     let isValid = true;
 
-    if (username.trim().length < 6) {
+    if (this.state.username.trim().length < 6) {
       usernameErr.usernameShort = "Username needs to be more than 6 characters.";
       isValid = false;
     }
 
-    if (!username.match(/^[0-9a-zA-Z]+$/)) {
+    if (!this.state.username.match(/^[0-9a-zA-Z]+$/)) {
       usernameErr.usernameNotAlphanumeric = "Username must only include alphanumeric symbols.";
       isValid = false;
     }
 
-    if (password.trim().length === 0) {
+    if (this.state.password.trim().length === 0) {
       passwordErr.noPassword = "Password is required.";
       isValid = false;
     }
 
-    if (email.trim().length === 0) {
+    if (this.state.email.trim().length === 0) {
       emailErr.noEmail = "Email is required.";
       isValid = false;
     }
 
-    if (!email.includes("@") || !email.includes(".")) {
+    if (!this.state.email.includes("@") || !this.state.email.includes(".")) {
       emailErr.noAtSymbol = "Email is not valid.";
       isValid = false;
     }
 
-    /*         if (!email.includes(".")) {
-                emailErr.noDot = "Email is not valid.";
-                isValid = false;
-            } */
-
-
-    setUsernameErr(usernameErr);
-    setPasswordErr(passwordErr);
-    setEmailErr(emailErr);
+    this.setState({
+      usernameErr: usernameErr,
+      passwordErr, passwordErr,
+      emailErr: emailErr,
+    })
     return isValid;
   }
 
@@ -199,7 +201,7 @@ export class ProfileView extends React.Component {
                 <Card.Title>Your Profile</Card.Title>
                 <Card.Text className="profile-value">Username: {Username}</Card.Text>
                 <Card.Text className="profile-value">Email: {Email}</Card.Text>
-                <Card.Text className="profile-value">Birthday: {Birthday.slice(0, 10)}</Card.Text>
+                <Card.Text className="profile-value">Birthday in YYYY-MM-DD: {Birthday.slice(0, 10)}</Card.Text>
                 <Button className="font-weight-bold" variant="danger"
                   onClick={() => this.handleDelete()}>Delete Account</Button>
               </Card.Body>
@@ -212,15 +214,15 @@ export class ProfileView extends React.Component {
               {FavoriteMovies.length === 0 && <div className='card-content'>You don't have any favorite movies yet!</div>}
               <div className='favorites-container'>
                 {FavoriteMovies.length > 0 &&
-                  movies.map((movie) => {
+                  movies.map((movie, index) => {
                     if (FavoriteMovies.includes(movie.Title)) {
-                      return (<div key={movie._id}>
+                      return (<div key={index}>
                         <Card >
                           <Link to={`/movies/${movie.Title}`}>
                             <Card.Text className="card-movietext">{movie.Title}</Card.Text>
                           </Link>
                           <Card.Body className='movie-card-body'>
-                            <Button size='sm' className='profile-button remove-favorite' variant='danger' onClick={(e) => this.removeMovie(e, movie._id)}>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' onClick={(e) => this.removeMovie(e, movie.Title)}>
                               Remove Favorite Movie
                             </Button>
                           </Card.Body>
@@ -238,28 +240,28 @@ export class ProfileView extends React.Component {
             <Form className="update-form" onSubmit={this.handleSubmit}>
               <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" defaultValue={Username} onChange={this.handleChange.bind(this)} />
+                <Form.Control type="text" name="username" placeholder="Change username" value={this.state.username || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
-              {Object.keys(usernameErr).map((key) => {
-                return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
+              {Object.keys(usernameErr).map((usernameErr, index) => {
+                return <div key={index} style={{ color: "red" }}>{usernameErr[key]}</div>
               })}
               <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" defaultValue={Password} onChange={this.handleChange.bind(this)} />
+                <Form.Control type="password" name="password" placeholder="Change password" value={this.state.password || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
-              {Object.keys(passwordErr).map((key) => {
-                return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
+              {Object.keys(passwordErr).map((passwordErr, index) => {
+                return <div key={index} style={{ color: "red" }}>{passwordErr[key]}</div>
               })}
               <Form.Group controlId="formEmail">
                 <Form.Label>Email:</Form.Label>
-                <Form.Control type="email" defaultValue={Email} onChange={this.handleChange.bind(this)} />
+                <Form.Control type="email" name="email" placeholder="Change email" value={this.state.email || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
-              {Object.keys(emailErr).map((key) => {
-                return <div key={key} style={{ color: "red" }}>{emailErr[key]}</div>
+              {Object.keys(emailErr).map((emailErr, index) => {
+                return <div key={index} style={{ color: "red" }}>{emailErr[key]}</div>
               })}
               <Form.Group controlId="formBirthday">
                 <Form.Label>Birthday:</Form.Label>
-                <Form.Control type="date" pattern="\d{4}-\d{2}-\d{2}" defaultValue={Birthday.slice(0, 10)} onChange={this.handleChange.bind(this)} />
+                <Form.Control type="date" pattern="\d{4}-\d{2}-\d{2}" name="birthday" value={this.state.birthday || ''} onChange={(e) => this.handleChange(e)} />
 
               </Form.Group>
 
@@ -284,14 +286,14 @@ export class ProfileView extends React.Component {
   }
 }
 
-//ProfileView.propTypes = {
-  //users: PropTypes.shape({
-    //Username: PropTypes.string.isRequired,
-    //Email: PropTypes.string.isRequired,
-    //Birthday: PropTypes.string,
-    //FavoriteMovies: PropTypes.array,
+ProfileView.propTypes = {
+  users: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string,
+    FavoriteMovies: PropTypes.array,
 
-  //})
-//};
+  })
+};
 
 
