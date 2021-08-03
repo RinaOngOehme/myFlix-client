@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 // import from react bootstrap
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -31,14 +31,15 @@ export function RegistrationView(props) {
     e.preventDefault();
     const isValid = formValidation();
     axios.post('https://myflixdb9278.herokuapp.com/users', {
-      username: username,
-      password: password,
-      email: email,
-      birthday: birthday
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
     })
       .then(response => {
         const data = response.data;
         console.log(data);
+        alert("You Are Registered!");
         window.open('/', '_self');
       })
       .catch(e => {
@@ -97,23 +98,23 @@ export function RegistrationView(props) {
           <Form.Label>Username:</Form.Label>
           <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
         </Form.Group>
-        {Object.keys(usernameErr).map((key) => {
-          return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
+        {Object.keys(usernameErr).map((usernameErr, index) => {
+          return <div key={index} style={{ color: "red" }}>{usernameErr[key]}</div>
         })}
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
           <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
         </Form.Group>
-        {Object.keys(passwordErr).map((key) => {
-          return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
+        {Object.keys(passwordErr).map((passwordErr, index) => {
+          return <div key={index} style={{ color: "red" }}>{passwordErr[key]}</div>
         })}
 
         <Form.Group controlId="formEmail">
           <Form.Label>Email:</Form.Label>
           <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
         </Form.Group>
-        {Object.keys(emailErr).map((key) => {
-          return <div key={key} style={{ color: "red" }}>{emailErr[key]}</div>
+        {Object.keys(emailErr).map((emailErr, index) => {
+          return <div key={index} style={{ color: "red" }}>{emailErr[key]}</div>
         })}
 
         <Form.Group controlId="formBirthday">
