@@ -46,8 +46,13 @@ export class ProfileView extends React.Component {
 
   componentDidMount() {
     let token = localStorage.getItem("token");
+    const { Username, Email, Birthday, FavoriteMovies } = this.props.user;
     // this.getUserInfo(token);
-    console.log(this.props);
+    this.setState({
+      username: Username,
+      email: Email,
+      birthday: Birthday
+    })
   }
 
   //getUserInfo(token) {
@@ -111,9 +116,8 @@ export class ProfileView extends React.Component {
 
 
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-
     const name = localStorage.getItem("user")
     const token = localStorage.getItem("token");
     const isValid = this.formValidation();
@@ -243,27 +247,27 @@ export class ProfileView extends React.Component {
 
           <Tab className='tab-item' eventKey='update-profile' title='Update User Profile'>
 
-            <Form className="update-form">
+            <Form className="update-form" onSubmit={this.handleSubmit} >
               <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control type="text" name="username" placeholder="Change username" value={this.state.username || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
               {Object.keys(usernameErr).map((usernameErr, index) => {
-                return <div key={index} style={{ color: "red" }}>{usernameErr[key]}</div>
+                return <div key={index} style={{ color: "red" }}>{usernameErr[index]}</div>
               })}
               <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Change password" value={this.state.password || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
               {Object.keys(passwordErr).map((passwordErr, index) => {
-                return <div key={index} style={{ color: "red" }}>{passwordErr[key]}</div>
+                return <div key={index} style={{ color: "red" }}>{passwordErr[index]}</div>
               })}
               <Form.Group controlId="formEmail">
                 <Form.Label>Email:</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Change email" value={this.state.email || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
               {Object.keys(emailErr).map((emailErr, index) => {
-                return <div key={index} style={{ color: "red" }}>{emailErr[key]}</div>
+                return <div key={index} style={{ color: "red" }}>{emailErr[index]}</div>
               })}
               <Form.Group controlId="formBirthday">
                 <Form.Label>Birthday:</Form.Label>
@@ -272,7 +276,7 @@ export class ProfileView extends React.Component {
               </Form.Group>
 
               <div className="update-bt">
-                <Button className="font-weight-bold" variant="warning" type="submit" onSubmit={this.handleSubmit} >Update Change</Button>
+                <Button className="font-weight-bold" variant="warning" type="submit" >Update Change</Button>
               </div>
             </Form>
 
@@ -301,5 +305,3 @@ ProfileView.propTypes = {
 
   })
 };
-
-
