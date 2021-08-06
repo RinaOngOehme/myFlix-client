@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import { connect } from 'react-redux';
+
 import axios from 'axios';
 
-import PropTypes from 'prop-types';
+
 import { RegistrationView } from '../registration-view/registration-view';
 import logo from 'url:../../../public/myFlix-logo.svg';
 
@@ -18,9 +20,6 @@ export function LoginView(props) {
   const [password, setPassword] = useState('');
   const [loginForm, setLoginform] = useState(true);
 
-  //the following const are to set states for form validation
-  const [usernameErr, setUsernameErr] = useState({});
-  const [passwordErr, setPasswordErr] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,9 +76,9 @@ export function LoginView(props) {
   );
 }
 
-LoginView.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
-  }),
-};
+
+const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (username, password) => dispatch(handleSubmit(username, password))
+});
+
+export default connect(null, mapDispatchToProps)(LoginView);
