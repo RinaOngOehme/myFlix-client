@@ -10,11 +10,14 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Container from 'react-bootstrap/Container';
 
-import PropTypes from 'prop-types';
-
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { setUser, setFavorites, deleteFavorite, updateUser, deleteUser } from "../../actions/actions";
+
+
 
 // import profile view styling
 import './profile-view.scss';
@@ -252,22 +255,22 @@ export class ProfileView extends React.Component {
                 <Form.Label>Username:</Form.Label>
                 <Form.Control type="text" name="username" placeholder="Change username" value={this.state.username || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
-              {Object.keys(usernameErr).map((usernameErr, index) => {
-                return <div key={index} style={{ color: "red" }}>{usernameErr[index]}</div>
+              {Object.keys(usernameErr).map((key) => {
+                return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
               })}
               <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Change password" value={this.state.password || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
-              {Object.keys(passwordErr).map((passwordErr, index) => {
-                return <div key={index} style={{ color: "red" }}>{passwordErr[index]}</div>
+              {Object.keys(passwordErr).map((key) => {
+                return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
               })}
               <Form.Group controlId="formEmail">
                 <Form.Label>Email:</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Change email" value={this.state.email || ''} onChange={(e) => this.handleChange(e)} />
               </Form.Group>
-              {Object.keys(emailErr).map((emailErr, index) => {
-                return <div key={index} style={{ color: "red" }}>{emailErr[index]}</div>
+              {Object.keys(emailErr).map((key) => {
+                return <div key={key} style={{ color: "red" }}>{emailErr[key]}</div>
               })}
               <Form.Group controlId="formBirthday">
                 <Form.Label>Birthday:</Form.Label>
@@ -296,12 +299,12 @@ export class ProfileView extends React.Component {
   }
 }
 
-ProfileView.propTypes = {
-  users: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string,
-    FavoriteMovies: PropTypes.array,
+let mapStateToProps = state => {
+  return {
+    user: state.user,
+    movies: state.movies
 
-  })
-};
+  }
+}
+
+export default connect(mapStateToProps, { setUser, setFavorites, deleteFavorite, updateUser, deleteUser })(ProfileView);
