@@ -3,10 +3,11 @@ import axios from 'axios';
 // import from react bootstrap
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
-import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+
+//import PropTypes from 'prop-types';
 
 // import logo
 import logo from 'url:../../../public/myFlix-logo.svg';
@@ -54,27 +55,27 @@ export function RegistrationView(props) {
     let isValid = true;
 
     if (username.trim().length < 6) {
-      usernameErr.usernameShort = "Username needs to be more than 6 characters.";
+      usernameErr.Username = "Username needs to be more than 6 characters.";
       isValid = false;
     }
 
     if (!username.match(/^[0-9a-zA-Z]+$/)) {
-      usernameErr.usernameNotAlphanumeric = "Username must only include alphanumeric symbols.";
+      usernameErr.Username = "Username must only include alphanumeric symbols.";
       isValid = false;
     }
 
     if (password.trim().length === 0) {
-      passwordErr.noPassword = "Password is required.";
+      passwordErr.Password = "Password is required.";
       isValid = false;
     }
 
     if (email.trim().length === 0) {
-      emailErr.noEmail = "Email is required.";
+      emailErr.Email = "Email is required.";
       isValid = false;
     }
 
     if (!email.includes("@") || !email.includes(".")) {
-      emailErr.noAtSymbol = "Email is not valid.";
+      emailErr.Email = "Email is not valid.";
       isValid = false;
     }
 
@@ -98,23 +99,23 @@ export function RegistrationView(props) {
           <Form.Label>Username:</Form.Label>
           <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
         </Form.Group>
-        {Object.keys(usernameErr).map((usernameErr, index) => {
-          return <div key={index} style={{ color: "red" }}>{usernameErr[key]}</div>
+        {Object.keys(usernameErr).map((key) => {
+          return <div key={key} style={{ color: "red" }}>{usernameErr[key]}</div>
         })}
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
           <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
         </Form.Group>
-        {Object.keys(passwordErr).map((passwordErr, index) => {
-          return <div key={index} style={{ color: "red" }}>{passwordErr[key]}</div>
+        {Object.keys(passwordErr).map((key) => {
+          return <div key={key} style={{ color: "red" }}>{passwordErr[key]}</div>
         })}
 
         <Form.Group controlId="formEmail">
           <Form.Label>Email:</Form.Label>
           <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
         </Form.Group>
-        {Object.keys(emailErr).map((emailErr, index) => {
-          return <div key={index} style={{ color: "red" }}>{emailErr[key]}</div>
+        {Object.keys(emailErr).map((key) => {
+          return <div key={key} style={{ color: "red" }}>{emailErr[key]}</div>
         })}
 
         <Form.Group controlId="formBirthday">
@@ -135,12 +136,18 @@ export function RegistrationView(props) {
   );
 }
 
-RegistrationView.propTypes = {
-  register: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    birthday: PropTypes.date
-  }),
-  onRegister: PropTypes.func,
-}
+//RegistrationView.propTypes = {
+//register: PropTypes.shape({
+//username: PropTypes.string.isRequired,
+// password: PropTypes.string.isRequired,
+// email: PropTypes.string.isRequired,
+//birthday: PropTypes.date
+// }),
+// onRegister: PropTypes.func,
+//}
+
+const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (username, password, email, birthday) => dispatch(handleSubmit(username, password, email, birthday))
+});
+
+export default connect(null, mapDispatchToProps)(RegistrationView);
