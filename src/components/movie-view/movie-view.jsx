@@ -3,7 +3,9 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { addFavorite } from "../../actions/actions";
 
 import './movie-view.scss';
 
@@ -76,3 +78,13 @@ export class MovieView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return {
+    user: state.user,
+    movies: state.movies
+
+  }
+}
+
+export default connect(mapStateToProps, { addFavorite })(MovieView);
