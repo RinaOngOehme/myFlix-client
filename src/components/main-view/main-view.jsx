@@ -13,7 +13,7 @@ import Nav from 'react-bootstrap/Navbar';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import MoviesList from '../movies-list/movies-list';
-import { setMovies, setUsers } from '../../actions/actions';
+import { setMovies } from '../../actions/actions';
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 
 // import main view styling
@@ -27,6 +27,8 @@ import { MovieCard } from '../movie-card/movie-card';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { NavBar } from '../navbar-view/navbar-view';
+
 
 import { Link } from "react-router-dom";
 
@@ -117,23 +119,9 @@ class MainView extends React.Component {
 
     return (
       <Router>
+        <NavBar user={user} />
         <Row className="main-view justify-content-md-center">
-          <Navbar fixed="top" bg="light">
-            <Navbar.Brand className="nav-style">Welcome to myFlix Movies!</Navbar.Brand>
-            <Link to={`/`}>
-              <Button className="btn btn-light">Login</Button>
-            </Link>
-            <Link to={`/profile`}>
-              <Button className="btn btn-light">Profile</Button>
-            </Link>
-            <Nav className="form-inline my-2 my-lg-0">
-              <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </Nav>
-            <Link to={`/`}>
-              <Button className="btn btn-light" onClick={() => { this.onLoggedOut() }}>Logout</Button>
-            </Link>
-          </Navbar>
+
 
           <Route exact path="/" render={() => {
             if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
