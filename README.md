@@ -11,7 +11,7 @@ To build the client-side component of a "movies" web application based on the ex
 * React Redux
 * React Bootstrap
 
-**Stack
+**Stack**
 * The complete project was developed using the MERN (MongoDB, Express.js, React.js, Node.js) stack
 
 **Dependencies**
