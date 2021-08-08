@@ -79,10 +79,6 @@ export function RegistrationView(props) {
       isValid = false;
     }
 
-    /*         if (!email.includes(".")) {
-                emailErr.noDot = "Email is not valid.";
-                isValid = false;
-            } */
 
 
     setUsernameErr(usernameErr);
@@ -136,15 +132,6 @@ export function RegistrationView(props) {
   );
 }
 
-//RegistrationView.propTypes = {
-//register: PropTypes.shape({
-//username: PropTypes.string.isRequired,
-// password: PropTypes.string.isRequired,
-// email: PropTypes.string.isRequired,
-//birthday: PropTypes.date
-// }),
-// onRegister: PropTypes.func,
-//}
 
 const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (username, password, email, birthday) => dispatch(handleSubmit(username, password, email, birthday))
