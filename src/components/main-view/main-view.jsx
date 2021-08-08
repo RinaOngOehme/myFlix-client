@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 // import react bootstrap
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Navbar';
+
 
 
 
