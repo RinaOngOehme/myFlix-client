@@ -28,15 +28,6 @@ export class ProfileView extends React.Component {
     super(props);
     this.state = {
 
-      /* user: {
-       Username: null,
-       Password: null,
-       Email: null,
-       Birthday: null,
-       FavoriteMovies: [],
-       movies: [],
-       }
-   } */
       username: "",
       password: "",
       email: "",
@@ -57,28 +48,6 @@ export class ProfileView extends React.Component {
       birthday: Birthday
     })
   }
-
-  //getUserInfo(token) {
-  //const name = localStorage.getItem('user')
-  //axios.get(`https://myflixdb9278.herokuapp.com/users/${name}`, {
-  //headers: { Authorization: `Bearer ${token}` }
-  //})
-  //.then(response => {
-  //assign the result to the state
-  //console.log(response)
-  //this.setState({
-  //Username: response.data.Username,
-  //Password: response.data.Password,
-  //Email: response.data.Email,
-  //Birthday: response.data.Birthday,
-  //FavoriteMovies: response.data.FavoriteMovies,
-  //});
-  //})
-  //.catch(function (error) {
-  //console.log(error);
-  //});
-  //}
-
 
 
   removeMovie(e, movie) {
