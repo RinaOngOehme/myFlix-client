@@ -30,8 +30,6 @@ import { NavBar } from '../navbar-view/navbar-view';
 
 import { Link } from "react-router-dom";
 
-// import logo
-import logo from 'url:../../../public/myFlix-logo.svg';
 
 class MainView extends React.Component {
 
